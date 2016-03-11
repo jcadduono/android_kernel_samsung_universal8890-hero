@@ -181,6 +181,7 @@ int FP_CHECK = 0; /* extern variable init */
 #endif
 
 bool fp_lockscreen_mode = false;
+EXPORT_SYMBOL(fp_lockscreen_mode);
 
 #define VENDOR		"SYNAPTICS"
 #define CHIP_ID		"VIPER"
