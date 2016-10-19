@@ -198,21 +198,20 @@ void dw_mci_exynos_cfg_smu(struct dw_mci *host)
 	if (!(host->pdata->quirks & DW_MCI_QUIRK_BYPASS_SMU))
 		return;
 #endif
-
-	id = of_alias_get_id(host->dev->of_node, "mshc");
+	id = host->channel;
 	switch (id) {
-	case 0:
+		case 0:
 #if defined(CONFIG_MMC_DW_FMP_DM_CRYPT) || defined(CONFIG_MMC_DW_FMP_ECRYPT_FS)
-		ret = exynos_smc(SMC_CMD_FMP, FMP_SECURITY, EMMC0_FMP, FMP_DESC_ON);
+			ret = exynos_smc(SMC_CMD_FMP, FMP_SECURITY, EMMC0_FMP, FMP_DESC_ON);
 #else
-		ret = exynos_smc(SMC_CMD_FMP, FMP_SECURITY, EMMC0_FMP, FMP_DESC_OFF);
+			ret = exynos_smc(SMC_CMD_FMP, FMP_SECURITY, EMMC0_FMP, FMP_DESC_OFF);
 #endif
-		break;
-	case 2:
-		ret = exynos_smc(SMC_CMD_FMP, FMP_SECURITY, EMMC2_FMP, FMP_DESC_OFF);
-		break;
-	default:
-		return;
+			break;
+		case 2:
+			ret = exynos_smc(SMC_CMD_FMP, FMP_SECURITY, EMMC2_FMP, FMP_DESC_OFF);
+			break;
+		default:
+			return;
 	}
 	if (ret)
 		dev_err(host->dev, "Fail to smc call for FMP SECURITY\n");

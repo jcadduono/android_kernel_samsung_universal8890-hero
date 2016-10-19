@@ -1145,6 +1145,7 @@
 		use-fine-tuning;
 		card-init-hwacg-ctrl;
 		samsung,voltage-int-extra = <0x7>;
+		switch_transfer;
 		ignore-phase = <(1 << 7)>;
 		fifo-depth = <0x40>;
 		qos_int_level = <255000>;

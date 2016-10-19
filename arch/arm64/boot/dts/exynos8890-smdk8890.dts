@@ -1125,12 +1125,15 @@
 		supports-cmd23;
 		supports-erase;
 		supports-highspeed;
+		sd-uhs-sdr50;
 		sd-uhs-sdr104;
 		bypass-smu;
 		bypass-for-allpass;
 		clock-gate;
 		use-fine-tuning;
 		card-init-hwacg-ctrl;
+		switch_transfer;
+		ignore-phase = <(1 << 7)>;
 		samsung,voltage-int-extra = <0x7>;
 		fifo-depth = <0x40>;
 		qos_int_level = <255000>;

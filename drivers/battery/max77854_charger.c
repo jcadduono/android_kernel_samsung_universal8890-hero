@@ -311,7 +311,7 @@ static int max77854_get_charging_health(struct max77854_charger_data *charger)
 				  MAX77854_CHG_REG_CNFG_00, &chg_cnfg_00);
 
 		/* print the log at the abnormal case */
-		if((charger->is_charging == 1) && (chg_dtls & 0x08)) {
+		if((charger->is_charging == 1) && ((chg_dtls & 0x08) || (chg_dtls & 0x04))) {
 			max77854_test_read(charger);
 			max77854_set_charger_state(charger, DISABLE);
 			max77854_set_float_voltage(charger, charger->float_voltage);
